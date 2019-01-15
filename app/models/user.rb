@@ -6,4 +6,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :campus,:department, presence: true
   has_secure_password
+  
+  mount_uploader :image, ImageUploader
+  has_many :message
 end
