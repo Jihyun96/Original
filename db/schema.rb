@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190115094122) do
+ActiveRecord::Schema.define(version: 20190117082353) do
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["message_id"], name: "index_comments_on_message_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "image"
+    t.datetime "deadline"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+  end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -19,6 +41,15 @@ ActiveRecord::Schema.define(version: 20190115094122) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
+  create_table "participates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participates_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_participates_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -34,5 +65,10 @@ ActiveRecord::Schema.define(version: 20190115094122) do
     t.string   "image"
   end
 
+  add_foreign_key "comments", "messages"
+  add_foreign_key "comments", "users"
+  add_foreign_key "events", "users"
   add_foreign_key "messages", "users"
+  add_foreign_key "participates", "events"
+  add_foreign_key "participates", "users"
 end

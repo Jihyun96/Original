@@ -6,3 +6,40 @@
 <%= link_to '一覧に戻る', messages_path %>
 <%= link_to 'このメッセージを編集する', edit_message_path(@message) %>
 <%= link_to 'このメッセージを削除する', @message, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+
+<div class="row">
+    <aside class="col-md-4">
+      <%= form_for(current_user.comment.build) do |f| %>
+         <%= f.hidden_field :message_id, :value => @message.id %>
+        <div class="form-group">
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+</div>
+
+<ul class="media-list">
+  <% @comments.each do |c| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to c.user.name, user_path(c.user) %> <span class="text-muted">posted at <%= c.created_at %></span>
+        </div>
+        <div>
+          <p><%= c.title %></p>
+        </div>
+        <div>
+          <p><%= c.content %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate @comments %>
+</ul>

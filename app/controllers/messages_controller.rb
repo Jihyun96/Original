@@ -3,10 +3,12 @@ class MessagesController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
-    @messages = Message.all
+    @messages = Message.all.order('created_at DESC').page(params[:page]).per(30)
   end
 
   def show
+    @comment = current_user.comment.build
+    @comments = Message.find_by(id: params[:id]).comment.page(params[:page])
   end
 
   def new
@@ -52,10 +54,11 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:title, :content)
   end
   def correct_user
-    @message = current_user.message.find_by(id: params[:id])
+    @message = Message.find_by(id: params[:id])
     unless @message
       redirect_to message_url
     end
   end
+  
 
 end

@@ -1,0 +1,10 @@
+<h1>Event一覧</h1>
+
+<ul>
+  <% @events.each do |e| %>
+    <li><%= e.id %> : <%= link_to e.title, e %> : <%= e.content %> : <%= e.deadline %> : <%= e.created_at %></li>
+  <% end %>
+</ul>
+<%= paginate @events %>
+
+<%= link_to '新規Eventの投稿', new_event_path %>

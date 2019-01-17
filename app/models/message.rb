@@ -3,4 +3,6 @@ class Message < ApplicationRecord
   
   validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 800 }
+  has_many :comment, dependent: :destroy
+  
 end

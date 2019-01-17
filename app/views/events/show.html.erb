@@ -1,0 +1,24 @@
+<h1>id: <%= @event.id %> のメッセージ詳細ページ</h1>
+<p><%= @event.title %></p>
+
+<% if @event.deadline? %>
+    <%= @event.deadline %>
+<% else %>
+<% end %>
+
+<% if @event.image? %>
+    <%= image_tag @event.image.url %>
+<% else %>
+    <%= image_tag("/images/icon/no-image.png") %>
+<% end %>
+<p><%= @event.content %></p>
+<% if current_user == @event.user%>
+    <%= link_to 'このメッセージを編集する', edit_event_path(@event) %>
+    <%= link_to 'このメッセージを削除する', @event, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<% elsif logged_in? %>
+    <%= render 'participates/participate_button', event: @event %>
+<% end %>
+
+
+
+<%= link_to '一覧に戻る', events_path %>
