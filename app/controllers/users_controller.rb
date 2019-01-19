@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @events = @user.participate_event.order('created_at DESC').page(params[:page]).per(30)
+    @messages = @user.message.order('created_at DESC').page(params[:page]).per(30)
+    @count_events = @user.participate_event.count
+    @count_messages = @user.message.count
   end
 
   def new
@@ -23,16 +27,17 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    @events = @user.participate_event.order('created_at DESC').page(params[:page]).per(10)
+    @messages = @user.message.order('created_at DESC').page(params[:page]).per(10)
  
-    #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
     if current_user == @user
    
       if @user.update(user_params)
         flash[:success] = 'ユーザー情報を編集しました。'
-        render :edit
+        redirect_to @user
       else
         flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
-        render :edit
+        render :show
       end   
      
     else

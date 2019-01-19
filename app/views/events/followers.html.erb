@@ -1,5 +1,7 @@
-<span class="badge"><%= @count_participates %></span>
+<h1>参加人数<span class="badge badge-info"><%= @count_participates %></span></h1>
 
 <div class="col-xs-8">
-  <%= render 'users/user', users: @users %>
+  <div class="participate-member">
+    <%= render 'users/user', users: @users %>
+  </div>
 </div>

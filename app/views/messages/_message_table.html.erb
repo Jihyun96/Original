@@ -1,0 +1,22 @@
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">タイトル</th>
+          <th scope="col">作成者</th>
+          <th scope="col">内容</th>
+          <th scope="col">投稿日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @messages.each do |e| %>
+        <tr>
+          <th scope="row"><%= e.id %></th>
+          <td><%= link_to e.title, e %></td>
+          <td><%= e.user.name %></td>
+          <td><%= e.content %></td>
+          <td><%= e.created_at.to_s(:published_on) %></td>
+        </tr>
+      　<% end %>
+      </tbody>
+    </table>

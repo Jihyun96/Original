@@ -35,7 +35,7 @@ class EventsController < ApplicationController
   def edit
   end
 
-  def upadate
+  def update
     if @event.update(event_params)
       flash[:success] = 'Event は正常に更新されました'
       redirect_to @event

@@ -1,0 +1,29 @@
+<ul class="media-list">
+  <% @comments.each do |c| %>
+    <li class="media">
+      <div class="media-left">
+          <% if c.user.image? %>
+            <%= image_tag c.user.image.url %>
+          <% else %>
+            <%= image_tag("/images/icon/no-image.png") %>
+          <% end %>
+      </div>
+      <div class="media-body">
+        <div>
+          <% if current_user.authority == true %>
+            <%= link_to c.user.name, user_path(c.user) %> <span class="text-muted">作成日：<%= c.created_at.to_s(:published_on) %></span>
+            <% else %>
+            <%= c.user.name %> <span class="text-muted">作成日：<%= c.created_at.to_s(:published_on) %></span>
+            <% end %>
+        </div>
+        <div>
+          <p><%= c.title %></p>
+        </div>
+        <div>
+          <p><%= c.content %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate @comments %>
+</ul>

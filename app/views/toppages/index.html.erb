@@ -1,12 +1,20 @@
-<div class="cover">
-  <div class="cover-image">
-    <image src="image/cover-bg.jpg" alt="test"></image>
-  </div>
-  <div class="cover-contents">
-    <h1>簡単な紹介</h1>
+<div class="container">
+  <div class="row">  
+      <div class="col-7">
+        <image src="image/cover-bg.jpg" alt="test" width="650" height="400"></image>
+      </div>
+      <div class="col-4">
+        <h4>簡単な紹介</h4>
+        <p>ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+        ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+        ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+        ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー</p>
+      </div>
   </div>
 </div>
 
-<div class="event">
-  <h1>イベント</h1>
+<div class="toppage-event">
+  <h2>イベント</h2>
+  <%= render 'events/event_table' %>
 </div>
+

@@ -1,11 +1,11 @@
   <% if current_user.bookmarking?(event) %>
     <%= form_for(current_user.participate.find_by(event_id: event.id), html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :event_id, event.id %>
-      <%= f.submit 'キャンセル', class: 'btn btn-danger btn-block' %>
+      <%= f.submit 'キャンセル', class: 'btn btn-danger' %>
     <% end %>
   <% else %>
     <%= form_for(current_user.participate.build) do |f| %>
       <%= hidden_field_tag :event_id, event.id %>
-      <%= f.submit '参加する', class: 'btn btn-primary btn-block' %>
+      <%= f.submit '参加する', class: 'btn btn-outline-pr' %>
     <% end %>
   <% end %>

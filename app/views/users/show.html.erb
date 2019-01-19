@@ -1,20 +1,50 @@
 <div class="user-profile">
   <div class="icon text-center">
-    <h1 class="img-circle">
-      <%= form_for(@user) do |f| %>
+    <%= form_for(@user) do |f| %>
         <% if @user.image? %>
-          <%= image_tag @user.image.url %>
+          <%= image_tag @user.image.url, onClick:"$('#upfile').click()" %>
+          <%= f.file_field :image, style:"display:none;", id:"upfile"%>
         <% else %>
           <%= image_tag("/images/icon/no-image.png") %>
         <% end %>
-        <%= f.file_field :image %>
-        <%= f.submit 'プロフィール編集を完了する', class: 'btn btn-primary' %>
-  　　<% end %>
-　　</h1>
+      
+      <script type="text/javascript">
+          $('input[type=file]').on('change', function (e) {
+              console.log(e.target.files);
+              if (e.target.files[0].size > 0) {
+                  $(this).parents('form').submit();
+              }
+          });
+      </script>
 
-
+    <% end %>
   </div>
   <div class="name text-center">
     <h1><%= @user.name %></h1>
   </div>
+  <div class="status text-center">
+    <ul>
+      <li>
+        <div class="status-label">Events</div>
+        <div id="events_count" class="status-value">
+          <%= @count_events %>
+        </div>
+      </li>
+      <li>
+        <div class="status-label">Free Space</div>
+        <div id="events_count" class="status-value">
+          <%= @count_messages %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="event">
+  <h2>Event</h2>
+  <%= render 'events/event_table' %>
+</div>
+<div class="message">
+  <h2>Free Space</h2>
+  <%= render 'messages/message_table' %>
 </div>

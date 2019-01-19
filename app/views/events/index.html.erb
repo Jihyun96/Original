@@ -1,10 +1,13 @@
-<h1>Event一覧</h1>
+<h1>Event 一覧</h1>
 
-<ul>
-  <% @events.each do |e| %>
-    <li><%= e.id %> : <%= link_to e.title, e %> : <%= e.content %> : <%= e.deadline %> : <%= e.created_at %></li>
+<div class="event">
+  <%= render 'event_table' %>
+  <% if current_user.authority == true%>
+    <%= link_to '新規Eventの投稿', new_event_path , class:"btn btn-outline-pr btn-sm"%>
   <% end %>
-</ul>
-<%= paginate @events %>
+  <%= paginate @events %>
+</div>
 
-<%= link_to '新規Eventの投稿', new_event_path %>
+
+
+

@@ -1,9 +1,10 @@
 <div class="row">
-  <div class="col-xs-offset-3 col-xs-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">会員登録</div>
-      <div class="panel-body">
+  <div class="col-lg-6 offset-lg-3">
+    <div class="text-center">
+      <h1>会員登録</h1>
+    </div>
         <%= form_for(@user) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
             <%= f.label :name, 'お名前' %>
             <%= f.text_field :name, class: 'form-control' %>
@@ -13,21 +14,21 @@
             <%= f.label :email, 'メールアドレス' %>
             <%= f.email_field :email, class: 'form-control' %>
           </div>
-          
-          <div class="form-group">
-            <%= f.label :campus, 'キャンパス' %>
-            <%= f.select :campus, [['',''],['日吉','日吉'], ['三田','三田'], ['矢上','矢上'], ['湘南藤沢','湘南藤沢'], ['信濃町','信濃町'], ['芝共立','芝共立']], {}, {class: 'form-control'} %>
-          </div>
-          
-          
-          <div class="form-group">
-            <%= f.label :department, '学部' %>
-            <%= f.select :department, [['',''],['文','文'], ['経済','経済'], ['法','法'], ['商','商'], ['医','医'], ['理工','理工'], ['薬','薬'], ['看護医療','看護医療'], ['総合政策','総合政策'], ['環境情報','環境情報']], {}, {class: 'form-control'} %>
-          </div>
-          
-          <div class="form-group">
-            <%= f.label :grade, '学年' %>
-            <%= f.select :grade, [['',],['1年',1],['2年',2], ['3年',3], ['4年',4]], {}, {class: 'form-control'} %>
+          <div class="form-row">
+            <div class="form-group col-4">
+              <%= f.label :campus, 'キャンパス' %>
+              <%= f.select :campus, [['',''],['日吉','日吉'], ['三田','三田'], ['矢上','矢上'], ['湘南藤沢','湘南藤沢'], ['信濃町','信濃町'], ['芝共立','芝共立']], {}, {class: 'form-control'} %>
+            </div>
+            
+            <div class="form-group col-4">
+              <%= f.label :department, '学部' %>
+              <%= f.select :department, [['',''],['文','文'], ['経済','経済'], ['法','法'], ['商','商'], ['医','医'], ['理工','理工'], ['薬','薬'], ['看護医療','看護医療'], ['総合政策','総合政策'], ['環境情報','環境情報']], {}, {class: 'form-control'} %>
+            </div>
+            
+            <div class="form-group col-4">
+              <%= f.label :grade, '学年' %>
+              <%= f.select :grade, [['',],['1年',1],['2年',2], ['3年',3], ['4年',4]], {}, {class: 'form-control'} %>
+            </div>
           </div>
 
           <div class="form-group">
@@ -41,10 +42,9 @@
           </div>
 
           <div class="text-right">
-            <%= f.submit '登録する', class: 'btn btn-success' %>
+            <%= f.submit '登録する', class: 'btn btn-outline-pr btn-block' %>
           </div>
         <% end %>
-      </div>
     </div>
   </div>
 </div>

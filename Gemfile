@@ -59,3 +59,5 @@ gem 'rmagick'
 gem 'kaminari'
 
 gem 'pry-byebug', group: :development
+
+gem 'bootstrap', '~> 4.2.1'

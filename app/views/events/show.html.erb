@@ -1,24 +1,50 @@
-<h1>id: <%= @event.id %> のメッセージ詳細ページ</h1>
-<p><%= @event.title %></p>
+<h1>id: <%= @event.id %> のイベント詳細ページ</h1>
+<div class="event-show">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        タイトル : <%= @event.title %>
+      </th>
+      <th>
+        締切日 : 
+        <% if @event.deadline? %>
+        <%= @event.deadline.to_s(:published_on) %>
+        <% else %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+        <% if @event.image? %>
+            <%= image_tag @event.image.url %>
+        <% else %>
+            <%= image_tag("/images/icon/no-image.png") %>
+        <% end %>
+      </th>
+      <td><%= simple_format(@event.content)%></td>
+    </tr>
+  </tbody>
+</table>
 
-<% if @event.deadline? %>
-    <%= @event.deadline %>
-<% else %>
-<% end %>
+<%= link_to '一覧に戻る', events_path, class:"btn btn-outline-secondary" %>
 
-<% if @event.image? %>
-    <%= image_tag @event.image.url %>
-<% else %>
-    <%= image_tag("/images/icon/no-image.png") %>
-<% end %>
-<p><%= @event.content %></p>
 <% if current_user == @event.user%>
-    <%= link_to 'このメッセージを編集する', edit_event_path(@event) %>
-    <%= link_to 'このメッセージを削除する', @event, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+    <%= link_to 'このイベントを編集する', edit_event_path(@event), class:"btn btn-outline-dark" %>
+    <%= link_to 'このイベントを削除する', @event, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class:"btn btn-outline-danger" %>
 <% elsif logged_in? %>
-    <%= render 'participates/participate_button', event: @event %>
+    <% if @event.deadline < Time.now %>
+        申し込みは終了しました。
+        <% else %>
+        <%= render 'participates/participate_button', event: @event %>
+    <% end %>
 <% end %>
+<% if current_user.authority == true %>
+    <%= link_to 'イベント参加者名簿', followers_event_path(@event), class:"btn btn-outline-light" %>
+<% end %>
+</div>
 
 
 
-<%= link_to '一覧に戻る', events_path %>

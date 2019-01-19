@@ -4,15 +4,21 @@
       <li class="media">
         <div class="media-left">
           <div>
-            <%= user.image %>
+            <% if user.image? %>
+              <%= image_tag user.image.url %>
+            <% else %>
+              <%= image_tag("/images/icon/no-image.png") %>
+            <% end %>
           </div>
         </div>
         <div class="media-body">
           <div>
-            <%= user.name %>
+            <%= link_to user.name , user_path(user) %>
           </div>
           <div>
-            <p><%= link_to 'View profile', user_path(user) %></p>
+            <%= user.campus %>
+            <%= user.department %>
+            <%= user.grade %>
           </div>
         </div>
       </li>
