@@ -15,7 +15,7 @@ if Rails.env.production?
   
     
       config.fog_directory  = ENV['AWS_BUCKET_NAME']
-      config.asset_host = ENV['AWS_BUCKET_URL']
+      
   end
 else  CarrierWave.configure do |config|
   config.storage = :file
