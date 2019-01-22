@@ -1,5 +1,11 @@
+require 'carrierwave/storage/abstract'
+require 'carrierwave/storage/file'
+require 'carrierwave/storage/fog'
+
 if Rails.env.production?
   CarrierWave.configure do |config|
+    config.fog_provider = 'fog/aws'
+    config.cache_storage = :fog
     config.fog_credentials = {
       provider: 'AWS',
       aws_access_key_id: 'AWS_ACCESS_KEY_ID',
@@ -10,5 +16,8 @@ if Rails.env.production?
     
       config.fog_directory  = ENV['AWS_BUCKET_NAME']
       config.asset_host = ENV['AWS_BUCKET_URL']
+  end
+else  CarrierWave.configure do |config|
+  config.storage = :file
   end
 end
