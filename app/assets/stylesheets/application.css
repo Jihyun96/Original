@@ -10,7 +10,9 @@ footer {
 
 /* navbar */
 .navbar {
-  background-color: #27292D;
+  background-color: #5b5b5b;
+  font-family: 'Bangers', cursive;
+  font-weight:bold;
 }
 
 
@@ -26,7 +28,9 @@ footer {
 }
 
 .container .col-4 {
+  font-family: 'Bangers', cursive;
   margin-left: 30px;
+  font-style: century;
   color: #C13537;
 }
 .container .col-4 p{
@@ -167,18 +171,18 @@ footer {
 /* button */
 
 .btn-outline-pr{
-  color:#DE5C4E;
-  border-color:#DE5C4E;
+  color:#AAD6EC;
+  border-color:#AAD6EC;
 }
 .btn-outline-pr:hover{
   color:#fff;
-  background-color:#DE5C4E;
-  border-color:#DE5C4E;
+  background-color:#AAD6EC;
+  border-color:#AAD6EC;
 }
 .btn-outline-pr:active{
   color:#fff;
-  background-color:#DE5C4E;
-  border-color:#DE5C4E;
+  background-color:#AAD6EC;
+  border-color:#AAD6EC;
 }
 
 /* comment */
