@@ -7,6 +7,7 @@
           <%= image_tag '/images/no-image.png', onClick:"$('#upfile').click()" %>
         <% end %>
       <%= f.file_field :image, style:"display:none;", id:"upfile"%>
+      <%= f.hidden_field :image_cache %>
       
       <script type="text/javascript">
           $('input[type=file]').on('change', function (e) {
