@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
   def correct_user
     @comment = current_user.comment.find_by(id: params[:id])
     unless @comment
-      redirect_to root_url
+      redirect_to :back
     end
   end
   

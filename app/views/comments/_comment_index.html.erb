@@ -10,11 +10,11 @@
       </div>
       <div class="media-body">
         <div>
-          <% if current_user.authority == true %>
-            <%= link_to c.user.name, user_path(c.user) %> <span class="text-muted">作成日：<%= c.created_at.to_s(:published_on) %></span>
-            <% else %>
-            <%= c.user.name %> <span class="text-muted">作成日：<%= c.created_at.to_s(:published_on) %></span>
-            <% end %>
+          <%= c.user.name %>
+          <span class="text-muted">作成日：<%= c.created_at.to_s(:published_on) %></span>
+          <% if current_user == @comment.user %>
+            <span><%= link_to "Delete", @cooment, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %></span>
+          <% end %>
         </div>
         <div>
           <p><%= c.title %></p>
