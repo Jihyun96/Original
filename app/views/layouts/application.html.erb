@@ -25,7 +25,10 @@
     <image src="/images/keio2.jpg" alt="navibar" class="top-image">
     <%= render 'layouts/flash_messages' %>
     <%= render 'layouts/navbar' %>
-    <%= yield %>
+  
+    <div class = "main">
+      <%= yield %>
+    </div>
     
     <%= render 'layouts/footer' %>
   </body>

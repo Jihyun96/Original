@@ -4,6 +4,12 @@
   src: url(/font/SSFlowerRoad.ttf);
 }
 
+@font-face {
+  font-family: GauFontDonutShop;
+  src: url(/font/GauFontDonutShop.TTF) format("truetype");
+  font-weight: bold;
+}
+
 /* body */
 body {
   background: #ffffff;
@@ -11,18 +17,17 @@ body {
   margin-right: auto; 
   width:80%;
 }
+.main {
+  margin-top: 20px;
+}
 footer {
   margin-top: 40px;
 }
 
 /* top-image */
 .top-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; 
   width: 100%;
-  height: 150px;
-  text-align: center;
+  height: 220px;
 }
 
 /* navbar */
@@ -40,7 +45,6 @@ footer {
 
 .container .col-7 {
   display: inline-block;
-  margin-left: -70px;
   margin-right: 30px;
 }
 
@@ -107,6 +111,15 @@ footer {
 }
 .event-show table th{
   color: #fff;
+}
+
+/* login */
+.login {
+  font-family: GauFontDonutShop;
+  
+}
+.login h1{
+  font-weight:bold;
 }
 
 /* user pofile */

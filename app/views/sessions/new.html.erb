@@ -1,25 +1,27 @@
-<div class="text-center">
-  <h1>ログイン</h1>
-</div>
-<div class="row">
-  <div class="col-lg-6 offset-lg-3">
-
-    <%= form_for(:session, url: login_path) do |f| %>
-
-      <div class="form-group">
-        <%= f.label :email, 'メールアドレス' %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password, 'パスワード' %>
-        <%= f.password_field :password, class: 'form-control' %>
-      </div>
-
-      <%= f.submit 'ログイン', class: 'btn btn-outline-pr btn-block' %>
-    <% end %>
-
-    <p><%= link_to '会員登録', signup_path %></p>
+<div class="login">
+  <div class="text-center">
+    <h1>ログイン</h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+  
+      <%= form_for(:session, url: login_path) do |f| %>
+  
+        <div class="form-group">
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+  
+        <div class="form-group">
+          <%= f.label :password, 'パスワード' %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+  
+        <%= f.submit 'ログイン', class: 'btn btn-outline-pr btn-block' %>
+      <% end %>
+  
+      <p class="text-center mt-1"><%= link_to '会員登録', signup_path %></p>
+    </div>
   </div>
 </div>
 
