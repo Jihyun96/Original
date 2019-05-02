@@ -21,13 +21,13 @@
     <%= favicon_link_tag('/favicon.ico') %>
   </head>
 
-  <body>
+  <body onContextmenu="return false;">
     <image src="/images/keio2.jpg" alt="navibar" class="top-image">
     <%= render 'layouts/flash_messages' %>
     <%= render 'layouts/navbar' %>
   
     <div class = "main">
-      <%= yield %>
+    <%= yield %>
     </div>
     
     <%= render 'layouts/footer' %>
