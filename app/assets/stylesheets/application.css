@@ -43,33 +43,40 @@ footer {
   margin-top: 35px;
 }
 
-.container .col-7 {
+.toppage-image {
   display: inline-block;
   margin-right: 30px;
 }
 
-.container .col-4 {
-  font-family: 'Bangers', cursive;
+.toppage-text {
+  font-family: 'Meiryo UI';
   margin-left: 30px;
   font-style: century;
-  color: #C13537;
+  color: #000;
 }
-.container .col-4 p{
+.toppage-text h2{
+  font-weight:bold;
+  margin-bottom:15px;
+}
+.toppage-text p{
   color : #B5A89D;
 }
 
 /* toppage event */
 .toppage-event {
-  margin: 30px;
+  margin-top:30px;
 }
 .toppage-event h2 {
-  color: #DE5C4E;
+  color: #000000;
+  font-family:'Meiryo UI';
   font-weight: bold;
   letter-spacing: 0.15em;
 }
 
 .toppage-event table thead{
-  background-color: #27292D;
+  background-color: #000035;
+  text-align:center;
+  font-family:'Meiryo UI';
 }
 
 .toppage-event table th{
@@ -77,8 +84,23 @@ footer {
 }
 
 .toppage-event table tbody{
-  background-color: #B5A89D;
+  background-color: #fff;
+  font-family:'Meiryo UI';
 }
+.toppage-event table tbody tr th{
+  padding: auto;
+  text-align:center;
+  color: #000;
+}
+.toppage-event table tbody tr td{
+  text-align:center;
+}
+.toppage-event table tbody tr td a,p{
+  padding: 0;
+  margin-top:auto;
+  margin-bottom: auto;
+}
+
 
 
 /* event */
@@ -114,11 +136,9 @@ footer {
 }
 
 /* login */
-.login {
-  font-family: GauFontDonutShop;
-  
-}
+
 .login h1{
+  font-family: GauFontDonutShop;
   font-weight:bold;
 }
 
